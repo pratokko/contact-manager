@@ -1,11 +1,11 @@
 const express = require("express");
+
+const dotenv = require("dotenv").config();
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-  res.send("Helloo express");
-});
+app.use("/api/contacts", require('./routes/contactRoutes'));
 
 app.listen(port, () => {
   console.log(`app now listenig to port ${port}`);
