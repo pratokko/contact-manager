@@ -15,6 +15,7 @@ const getContacts = (req, res) => {
  */
 
 const createContact = (req, res) => {
+  console.log('The request body is: ', req.body);
   res.status(201).json({ message: "create contacts" });
 };
 
@@ -25,7 +26,7 @@ const createContact = (req, res) => {
  */
 
 const getContact = (req, res) => {
-  res.status(200).json({ message: "get individual contact" });
+  res.status(200).json({ message: `get individual contact ${req.params.id}` });
 };
 /**
  * @description update  contacts
@@ -34,7 +35,7 @@ const getContact = (req, res) => {
  */
 
 const updateContact = (req, res) => {
-  res.status(200).json({ message: "update contacts" });
+  res.status(200).json({ message: `update contact ${req.params.id}` });
 };
 /**
  * @description Delete  contacts
@@ -43,7 +44,7 @@ const updateContact = (req, res) => {
  */
 
 const deleteContact = (req, res) => {
-  res.status(200).json({ message: "delete contacts" });
+  res.status(200).json({ message: `delete contact ${req.params.id}` });
 };
 module.exports = {
   getContacts,
