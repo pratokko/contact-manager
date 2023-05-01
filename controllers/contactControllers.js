@@ -4,7 +4,7 @@
  * @access public
  */
 
-const getContacts = (req, res) => {
+const getContacts = async (req, res) => {
   res.status(200).json({ message: "get all contacts" });
 };
 
@@ -14,8 +14,14 @@ const getContacts = (req, res) => {
  * @access public
  */
 
-const createContact = (req, res) => {
+const createContact =async (req, res) => {
   console.log('The request body is: ', req.body);
+  const  {name, email, phone} = req.body
+
+  if(!name || email || phone) {
+    res.status(400)
+    throw new Error('name email or phone is missing')
+  }
   res.status(201).json({ message: "create contacts" });
 };
 
@@ -25,7 +31,7 @@ const createContact = (req, res) => {
  * @access public
  */
 
-const getContact = (req, res) => {
+const getContact = async (req, res) => {
   res.status(200).json({ message: `get individual contact ${req.params.id}` });
 };
 /**
@@ -34,7 +40,7 @@ const getContact = (req, res) => {
  * @access public
  */
 
-const updateContact = (req, res) => {
+const updateContact = async (req, res) => {
   res.status(200).json({ message: `update contact ${req.params.id}` });
 };
 /**
@@ -43,7 +49,7 @@ const updateContact = (req, res) => {
  * @access public
  */
 
-const deleteContact = (req, res) => {
+const deleteContact = async (req, res) => {
   res.status(200).json({ message: `delete contact ${req.params.id}` });
 };
 module.exports = {
